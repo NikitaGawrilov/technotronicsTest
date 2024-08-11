@@ -9,4 +9,4 @@ class Device(Device_base):
     __tablename__ = 'device'
     id = Column(Integer, primary_key=True)
     name = Column(VARCHAR(255))
-    created_at = Column(TIMESTAMP, default=dt.utcnow().timestamp())
+    created_at = Column(TIMESTAMP, default=dt.utcnow)
