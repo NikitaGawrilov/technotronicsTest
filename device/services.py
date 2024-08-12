@@ -1,7 +1,9 @@
-from models.device import Device
+from device.models import Device
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, update, delete
 from typing import Sequence
+from fastapi import Depends
+from database import get_session
 
 
 class DeviceService:
@@ -30,3 +32,7 @@ class DeviceService:
         result = await self.session.scalar(stmt)
         await self.session.commit()
         return result
+
+
+async def get_device_service(session: AsyncSession = Depends(get_session)):
+    yield DeviceService(session)
