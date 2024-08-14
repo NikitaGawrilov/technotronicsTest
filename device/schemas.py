@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from datetime import datetime
 
 
+# Схемы для валидации запросов и ответов
 class DeviceCreateRequest(BaseModel):
     name: str
 

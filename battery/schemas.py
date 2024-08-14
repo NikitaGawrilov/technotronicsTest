@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from datetime import datetime
 
 
+# Схемы для валидации запросов и ответов
 class BatteryCreateRequest(BaseModel):
     name: str
     paired_device_id: int | None = None

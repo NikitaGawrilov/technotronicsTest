@@ -7,6 +7,7 @@ from device.models import Device
 Battery_base = declarative_base()
 
 
+# Модель таблицы battery (аккумулятор)
 class Battery(Battery_base):
     __tablename__ = 'battery'
     id = Column(Integer, primary_key=True)

@@ -5,6 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 Device_base = declarative_base()
 
 
+# Модель таблицы device (устройство)
 class Device(Device_base):
     __tablename__ = 'device'
     id = Column(Integer, primary_key=True)

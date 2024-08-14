@@ -5,21 +5,24 @@ from typing import Sequence
 
 
 device_router = APIRouter(
-    prefix='/device',
+    prefix='/api/device',
     tags=['Device']
 )
 
 
+# Получить все устройства
 @device_router.get('/all', response_model=Sequence[DeviceResponse])
 async def get_all(service: DeviceService = Depends(get_device_service)):
     return await service.get_all()
 
 
+# Создать устройство
 @device_router.post('/create', response_model=DeviceResponse)
 async def create_device(device: DeviceCreateRequest, service: DeviceService = Depends(get_device_service)):
     return await service.create_device(name=device.name)
 
 
+# Переименовать устройство
 @device_router.put('/rename', response_model=DeviceResponse)
 async def rename_device(
         device: DeviceRenameRequest = Depends(DeviceRenameRequest),
@@ -31,6 +34,7 @@ async def rename_device(
     )
 
 
+# Удалить устройство
 @device_router.delete('/delete', response_model=DeviceResponse)
 async def delete_device(
     device: DeviceDeleteRequest = Depends(DeviceDeleteRequest),
